@@ -1,0 +1,37 @@
+  <div class="my-3 mx-auto">
+    <h3>Liste des clients :</h3>
+  </div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Chercher par nom du client"
+      (input)="search($event.target.value)" style="margin-right: 3em;">
+  </div>
+
+
+<table class="table table-bordered">
+  <caption>Liste des clients</caption>
+  <thead class="bg-info text-center">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Adresse</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of listClients">
+      <th scope="row">{{c.id}}</th>
+      <td>{{c.nom}}</td>
+      <td>{{c.prenom}}</td>
+      <td>{{c.email}}</td>
+      <td>{{c.adresse}}</td>
+      <td>
+        <button class="btn btn-danger btn-sm btn-block" (click)="deleteClient(c.id)">Supprimer</button>
+        <button class="btn btn-warning btn-sm btn-block" [routerLink]="['/modifierClient' ,c.id]">Modifier</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

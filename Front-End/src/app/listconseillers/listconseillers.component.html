@@ -1,0 +1,45 @@
+<div class="input-group ">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Search" (input)="search($event.target.value)">
+   </div>
+   <h3>Status :</h3>
+   <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-outline-primary">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked (click)="findByStatus()"> All
+      </label>
+      <label class="btn btn-outline-success">
+        <input type="radio" name="options" id="option2" autocomplete="off" (click)="findByStatus(true)"> Active
+      </label>
+      <label class="btn btn-outline-danger">
+        <input type="radio" name="options" id="option3" autocomplete="off" (click)="findByStatus(false)"> Inactive
+      </label>
+    </div>
+  <table class="table table-bordered">
+          <caption>Liste des conseillers</caption>
+          <thead class="bg-info text-center" >
+            <tr>
+                <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Prenom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Adresse</th>
+              <th scope="col">Nom d'utilisateur</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of listConseillers">
+              <td>{{c.id}}</td>
+              <td>{{c.nom}}</td>
+              <td>{{c.prenom}}</td>
+              <td>{{c.email}}</td>
+              <td>{{c.adresse}}</td>
+              <td>{{c.login}}</td>
+              <td>
+                <button class="btn btn-danger btn-sm btn-block" (click)="deleteClient(c.id)">Delete</button>
+                <button class="btn btn-warning btn-sm btn-block" [routerLink]="['/modifierConseiller', c.id]">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>

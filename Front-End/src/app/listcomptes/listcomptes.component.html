@@ -1,0 +1,63 @@
+<div class="input-group ">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Search" (input)="search($event.target.value)">
+       </div>
+       <h3>Status :</h3>
+       <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-outline-primary">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked (click)="findByStatus()"> All
+          </label>
+          <label class="btn btn-outline-success">
+            <input type="radio" name="options" id="option2" autocomplete="off" (click)="findByStatus(true)"> Active
+          </label>
+          <label class="btn btn-outline-danger">
+            <input type="radio" name="options" id="option3" autocomplete="off" (click)="findByStatus(false)"> Inactive
+          </label>
+          
+        </div>
+        
+            
+          
+      <table class="table table-bordered">
+              <caption>Liste des comptes</caption>
+              <thead class="bg-info text-center" >
+                <tr>
+                    <th scope="col">Numéro de compte</th>
+                  <th scope="col">Solde</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of listClients">
+                    <th scope="row">{{c.id}}</th>
+                  <td>{{c.nom}}</td>
+                  <td>{{c.prenom}}</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm btn-block" (click)="deleteClient(c.id)">Delete</button>
+                    <button class="btn btn-warning btn-sm btn-block" [routerLink]="['/modifierClient' ,c.id]">Modifier</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <table class="table table-bordered">
+                    <caption>Liste des comptes</caption>
+                    <thead class="bg-info text-center" >
+                      <tr>
+                          <th scope="col">Numéro de compte</th>
+                        <th scope="col">Solde</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let c of listClients">
+                          <th scope="row">{{c.id}}</th>
+                        <td>{{c.nom}}</td>
+                        <td>{{c.prenom}}</td>
+                        <td>
+                          <button class="btn btn-danger btn-sm btn-block" (click)="deleteClient(c.id)">Delete</button>
+                          <button class="btn btn-warning btn-sm btn-block" [routerLink]="['/modifierClient' ,c.id]">Modifier</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
